@@ -36,13 +36,8 @@ const courseFromDb = [
 const express = require('express');
 const app = express();
 
-// var bodyParser = require('body-parser');
-
 // //To parse URL encoded data
-// app.use(bodyParser.urlencoded({ extended: false }))
-
-// //To parse json data
-// app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json()); // parse JSON bodies in the req object
 // app.use('static', ''); // parse JSON bodies in the req object
@@ -51,8 +46,8 @@ app.get('/', function(req, res){
     res.send("Hello World !");
 });
 app.get('/course', function(req, res){ // course/:id
-    res.send("Hello World !");
-    // res.json(courseFromDb);
+    // res.send("Hello World !");
+    res.json(courseFromDb);
 });
 
 app.use((err, req, res, next) => {
